@@ -41,13 +41,13 @@ jobs:
         Copy-Item -LiteralPath $launcher -Destination $setup -Force
         Write-Host "Created $setup"
 
-    - name: Upload XPLSTRAP executables
+    # The setup and launcher are byte-for-byte identical. Upload only one
+    # copy to avoid doubling the Actions artifact size.
+    - name: Upload XPLSTRAP setup executable
       uses: actions/upload-artifact@v7
       with:
         name: XPLSTRAP-Windows-x64
-        path: |
-          .\\Bloxstrap\\bin\\Release\\net6.0-windows\\win-x64\\publish\\XPLSTRAP.exe
-          .\\Bloxstrap\\bin\\Release\\net6.0-windows\\win-x64\\publish\\XPLSTRAP-Setup.exe
+        path: .\\Bloxstrap\\bin\\Release\\net6.0-windows\\win-x64\\publish\\XPLSTRAP-Setup.exe
         if-no-files-found: error
 
   release:
@@ -58,11 +58,14 @@ jobs:
       contents: write
 
     steps:
-      - name: Download XPLSTRAP executables
+      - name: Download XPLSTRAP setup executable
         uses: actions/download-artifact@v8
         with:
           name: XPLSTRAP-Windows-x64
           path: release
+
+      - name: Create launcher alias
+        run: cp release/XPLSTRAP-Setup.exe release/XPLSTRAP.exe
 
       - name: Create release
         uses: softprops/action-gh-release@v3
@@ -82,11 +85,14 @@ jobs:
       contents: write
 
     steps:
-      - name: Download XPLSTRAP executables
+      - name: Download XPLSTRAP setup executable
         uses: actions/download-artifact@v8
         with:
           name: XPLSTRAP-Windows-x64
           path: release
+
+      - name: Create launcher alias
+        run: cp release/XPLSTRAP-Setup.exe release/XPLSTRAP.exe
 
       - name: Create test release
         uses: softprops/action-gh-release@v3
