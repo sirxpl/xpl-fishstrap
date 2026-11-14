@@ -72,9 +72,11 @@ namespace Bloxstrap.UI.Elements.Bootstrapper
         public static string? SelectVideoPath()
         {
             var settings = App.Settings.Prop;
-            IEnumerable<string> configuredPaths = settings.BootstrapperVideoPaths.Count > 0
-                ? settings.BootstrapperVideoPaths
-                : new[] { settings.BootstrapperVideoPath };
+            IEnumerable<string> configuredPaths = settings.BootstrapperVideos.Count > 0
+                ? settings.BootstrapperVideos.Select(video => video.Location)
+                : settings.BootstrapperVideoPaths.Count > 0
+                    ? settings.BootstrapperVideoPaths
+                    : new[] { settings.BootstrapperVideoPath };
 
             List<string> availablePaths = configuredPaths
                 .Where(path => !String.IsNullOrWhiteSpace(path) && File.Exists(path))
