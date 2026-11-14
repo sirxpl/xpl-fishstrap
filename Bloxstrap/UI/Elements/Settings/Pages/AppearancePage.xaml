@@ -128,7 +128,7 @@
                     <ColumnDefinition Width="135" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ListBox x:Name="BootstrapperVideosListBox" Grid.Row="0" Grid.Column="0" Height="132"
+                <ListBox Grid.Row="0" Grid.Column="0" Height="132"
                          Margin="0,0,4,0" ItemsSource="{Binding BootstrapperVideos, Mode=OneWay}"
                          DisplayMemberPath="Name" SelectedIndex="{Binding SelectedBootstrapperVideoIndex, Mode=TwoWay}"
                          SelectionChanged="BootstrapperVideoSelection" />
