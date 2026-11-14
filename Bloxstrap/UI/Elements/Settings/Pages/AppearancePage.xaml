@@ -97,7 +97,7 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <ui:Button Grid.Column="1" Width="34" Height="30" Margin="4,0,0,0" Icon="Folder16" ToolTip="{Binding CustomRobloxIconLocation, Mode=OneWay}" Command="{Binding BrowseCustomRobloxIconLocationCommand}" />
+                    <ui:Button Grid.Column="1" Width="34" Height="30" Margin="4,0,0,0" Icon="Folder24" ToolTip="{Binding CustomRobloxIconLocation, Mode=OneWay}" Command="{Binding BrowseCustomRobloxIconLocationCommand}" />
                 </Grid>
             </controls:OptionControl>
         </StackPanel>
@@ -137,9 +137,9 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <ui:Button Grid.Column="0" Margin="0,0,3,0" Content="Add" Icon="Add16"
+                    <ui:Button Grid.Column="0" Margin="0,0,3,0" Content="Add" Icon="Add28"
                                HorizontalAlignment="Stretch" Command="{Binding AddBootstrapperVideoCommand}" />
-                    <ui:Button Grid.Column="1" Margin="3,0,0,0" Content="Delete" Icon="Delete16"
+                    <ui:Button Grid.Column="1" Margin="3,0,0,0" Content="Delete" Icon="Delete28"
                                Appearance="Danger" HorizontalAlignment="Stretch"
                                IsEnabled="{Binding IsBootstrapperVideoSelected}"
                                Command="{Binding RemoveBootstrapperVideoCommand}" />
