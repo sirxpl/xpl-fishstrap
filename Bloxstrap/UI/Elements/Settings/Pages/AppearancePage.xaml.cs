@@ -15,6 +15,14 @@ namespace Bloxstrap.UI.Elements.Settings.Pages
             InitializeComponent();
         }
 
+        public void BootstrapperVideoSelection(object sender, SelectionChangedEventArgs e)
+        {
+            var viewModel = (AppearanceViewModel)DataContext;
+            viewModel.SelectedBootstrapperVideo = (BootstrapperVideo)((ListBox)sender).SelectedItem;
+            viewModel.OnPropertyChanged(nameof(viewModel.SelectedBootstrapperVideo));
+            viewModel.OnPropertyChanged(nameof(viewModel.IsBootstrapperVideoSelected));
+        }
+
         public void CustomThemeSelection(object sender, SelectionChangedEventArgs e)
         {
             AppearanceViewModel viewModel = (AppearanceViewModel)DataContext;
