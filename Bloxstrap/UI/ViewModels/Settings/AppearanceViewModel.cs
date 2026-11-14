@@ -66,6 +66,7 @@ namespace Bloxstrap.UI.ViewModels.Settings
             {
                 _selectedBootstrapperVideo = value;
                 OnPropertyChanged(nameof(SelectedBootstrapperVideo));
+                OnPropertyChanged(nameof(SelectedBootstrapperVideoIndex));
                 OnPropertyChanged(nameof(IsBootstrapperVideoSelected));
             }
         }
@@ -282,6 +283,10 @@ namespace Bloxstrap.UI.ViewModels.Settings
                     });
                 }
             }
+
+            // Clear the legacy values after migration so a deleted entry cannot reappear at launch.
+            App.Settings.Prop.BootstrapperVideoPaths.Clear();
+            App.Settings.Prop.BootstrapperVideoPath = "";
 
             foreach (var entry in BootstrapperIconEx.Selections)
                 Icons.Add(new BootstrapperIconEntry { IconType = entry });
